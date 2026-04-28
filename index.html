@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Documentation Universe — Lucent Prism</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #ffffff;
+  --ink: #0d0d0d;
+  --ink-mid: #3d3d3d;
+  --ink-light: #848484;
+  --ink-ghost: #c0c0c0;
+  --rule: #e4e4e4;
+  --rule-soft: #f2f2f2;
+  --warm-surface: #fafaf8;
+  --page-max: 1140px;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: 'Lora', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ══ COVER ══════════════════════════════════════════════════════════ */
+
+.cover {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 56px 64px 72px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--rule);
+}
+
+.cover-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0;
+}
+
+/* Logo space — blank, Nidhi adds manually via screenshot */
+.logo-space {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+}
+
+.cover-doc-ref {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  line-height: 1.9;
+  text-align: right;
+}
+
+.cover-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px 0 56px;
+}
+
+.cover-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: riseIn 0.7s 0.1s ease forwards;
+}
+
+.cover-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(56px, 7.5vw, 96px);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 0;
+  opacity: 0;
+  animation: riseIn 0.7s 0.25s ease forwards;
+}
+
+.cover-title-bold {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(56px, 7.5vw, 96px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  display: block;
+  opacity: 0;
+  animation: riseIn 0.7s 0.38s ease forwards;
+}
+
+.cover-title-italic {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  display: block;
+  opacity: 0;
+  animation: riseIn 0.7s 0.5s ease forwards;
+}
+
+.cover-desc {
+  margin-top: 36px;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-mid);
+  max-width: 580px;
+  line-height: 1.65;
+  opacity: 0;
+  animation: riseIn 0.7s 0.65s ease forwards;
+}
+
+.cover-rule {
+  height: 1px;
+  background: var(--ink);
+  margin: 44px 0;
+  opacity: 0;
+  animation: riseIn 0.5s 0.75s ease forwards;
+}
+
+/* Stats */
+.cover-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  opacity: 0;
+  animation: riseIn 0.6s 0.85s ease forwards;
+}
+
+.stat {
+  padding: 28px 0;
+  border-right: 1px solid var(--rule);
+}
+.stat:first-child { border-left: none; }
+.stat:last-child { border-right: none; }
+
+.stat-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  display: block;
+  padding: 0 0 0 32px;
+}
+.stat:first-child .stat-n { padding-left: 0; }
+
+.stat-l {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  display: block;
+  margin-top: 10px;
+  padding: 0 0 0 32px;
+  line-height: 1.5;
+}
+.stat:first-child .stat-l { padding-left: 0; }
+
+.cover-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid var(--rule);
+}
+
+.cover-note {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--ink-mid);
+  max-width: 540px;
+  line-height: 1.7;
+}
+
+.cover-note strong {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.cover-contact {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--ink-light);
+  text-align: right;
+  line-height: 2;
+}
+
+/* ══ INTRODUCTION ═══════════════════════════════════════════════════ */
+
+.intro {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 80px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--warm-surface);
+}
+
+.intro h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.intro p {
+  font-family: 'Lora', serif;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--ink-mid);
+}
+
+.intro p + p { margin-top: 14px; }
+
+.col-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 20px;
+  margin-top: 28px;
+  align-items: baseline;
+}
+
+.col-key {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.col-val {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  color: var(--ink-mid);
+  line-height: 1.55;
+}
+
+/* ══ DOMAIN OVERVIEW GRID ═══════════════════════════════════════════ */
+
+.overview {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 72px 64px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 36px;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+
+.ov-item {
+  padding: 22px 20px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ov-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--d-color);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.ov-item:hover::before { opacity: 1; }
+.ov-item:hover { background: var(--rule-soft); }
+
+.ov-num {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--d-color);
+  margin-bottom: 5px;
+  display: block;
+}
+
+.ov-name {
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.ov-count {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  color: var(--ink-ghost);
+  letter-spacing: 0.08em;
+}
+
+/* ══ DOMAIN SECTIONS ════════════════════════════════════════════════ */
+
+.catalog {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 64px 120px;
+}
+
+.domain {
+  padding: 68px 0 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.domain:last-child { border-bottom: none; }
+
+.domain-hdr {
+  padding-left: 24px;
+  border-left: 4px solid var(--d-color);
+  margin-bottom: 28px;
+}
+
+.d-num {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--d-color);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.d-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 3.8vw, 46px);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--d-color);
+  letter-spacing: -0.01em;
+}
+
+.d-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+  padding-left: 24px;
+}
+
+.d-count {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--ink-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.d-rule {
+  height: 1px;
+  background: var(--d-color);
+  opacity: 0.18;
+  margin-bottom: 0;
+}
+
+/* Entry table */
+.etable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.etable thead tr {
+  border-bottom: 1px solid var(--rule);
+}
+
+.etable thead th {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  padding: 18px 14px 14px;
+  text-align: left;
+}
+
+.etable thead th:first-child { padding-left: 0; width: 44px; }
+.etable thead th:nth-child(2) { width: 23%; }
+.etable thead th:nth-child(3) { }
+.etable thead th:last-child { width: 21%; white-space: nowrap; }
+
+.etable tbody tr {
+  border-bottom: 1px solid var(--rule-soft);
+  transition: background 0.12s ease;
+}
+
+.etable tbody tr:last-child { border-bottom: none; }
+.etable tbody tr:hover { background: var(--rule-soft); }
+
+.etable td {
+  padding: 15px 14px;
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.etable td:first-child {
+  padding-left: 0;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--ink-ghost);
+  padding-top: 18px;
+  white-space: nowrap;
+}
+
+.t-type {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  padding-right: 20px;
+}
+
+.t-purpose {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink-mid);
+}
+
+.t-standard {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--ink-light);
+}
+
+/* ══ CLOSING ═══════════════════════════════════════════════════════ */
+
+.closing {
+  border-top: 1px solid var(--rule);
+  background: var(--warm-surface);
+}
+
+.closing-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 80px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Logo space on closing page — blank, Nidhi adds manually */
+.closing-logo {
+  width: 108px;
+  height: 108px;
+  margin-bottom: 36px;
+}
+
+.closing h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.closing p {
+  font-family: 'Lora', serif;
+  font-size: 17px;
+  line-height: 1.78;
+  color: var(--ink-mid);
+  margin-bottom: 16px;
+}
+
+.closing-contact-block {
+  margin-top: 40px;
+  padding-top: 36px;
+  border-top: 1px solid var(--rule);
+}
+
+.c-line {
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 2.2;
+  letter-spacing: 0.04em;
+}
+
+.closing-meta {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-top: 24px;
+  line-height: 2;
+}
+
+.all-domains-list { display: flex; flex-direction: column; }
+
+.adl-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-family: 'Lora', serif;
+  font-size: 15px;
+}
+
+.adl-row:last-child { border-bottom: none; }
+.adl-name { color: var(--ink-mid); }
+.adl-n {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  color: var(--ink-light);
+  letter-spacing: 0.1em;
+  margin-left: 16px;
+  flex-shrink: 0;
+}
+
+/* ══ FOOTER ══════════════════════════════════════════════════════ */
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 22px 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-footer span {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  color: var(--ink-light);
+  letter-spacing: 0.08em;
+}
+
+/* ══ ANIMATION ════════════════════════════════════════════════════ */
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══ PRINT ════════════════════════════════════════════════════════ */
+
+@media print {
+  .cover { page-break-after: always; min-height: auto; }
+  .domain { page-break-inside: avoid; }
+  .etable tbody tr { page-break-inside: avoid; }
+}
+
+/* ── MATURITY SCALE ──────────────────────────────────────────── */
+.maturity-section {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 64px 64px 72px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--warm-surface);
+}
+
+.maturity-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 32px;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+
+.ms-step {
+  padding: 24px 18px 20px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ms-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.ms-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.ms-desc {
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  font-style: italic;
+}
+
+.ms-note {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  color: var(--ink-mid);
+  line-height: 1.78;
+  padding: 20px 24px;
+  border-left: 3px solid var(--ink-light);
+  background: var(--white);
+}
+
+.ms-note strong {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-topbar">
+    <div class="logo-space"></div>
+    <div class="cover-doc-ref">
+      Lucent Prism &nbsp;·&nbsp; Knowledge Architecture Practice<br>
+      LP&#8209;CAT&#8209;001 &nbsp;·&nbsp; Version 1.0 &nbsp;·&nbsp; 2026
+    </div>
+  </div>
+
+  <div class="cover-main">
+    <p class="cover-eyebrow">Comprehensive Reference</p>
+    <h1 class="cover-title">
+      The Documentation
+      <span class="cover-title-bold">Universe</span>
+      <span class="cover-title-italic">— A Comprehensive Reference Catalog</span>
+    </h1>
+    <p class="cover-desc">A complete, structured map of every class of organisational document that should exist in a professionally governed enterprise — from the founder's first policy to the most complex governance suite.</p>
+    <p style="margin-top:16px; font-family:'Jost',sans-serif; font-size:11px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-light);">First Edition &nbsp;·&nbsp; April 2026</p>
+    <div class="cover-rule"></div>
+    <div class="cover-stats" id="js-stats"></div>
+  </div>
+
+  <div class="cover-bottom">
+    <p class="cover-note">
+      <strong>A note on scope.</strong> A document type listed here does not imply it exists in any organisation — it implies it should, at the appropriate stage of maturity. The Standard&nbsp;/&nbsp;Driver column marks the compliance ceiling, not a condition of entry. This catalog serves everyone from the solo entrepreneur to the listed enterprise — across every sector and stage of growth.
+    </p>
+    <div class="cover-contact">
+      nidhiagarwal@lucentprism.com<br>
+      +91&nbsp;91193&nbsp;20400
+    </div>
+  </div>
+</section>
+
+<!-- INTRODUCTION -->
+<section class="intro">
+  <div>
+    <h2>Purpose of This Catalog</h2>
+    <p>This catalog provides a structured reference of every class of organisational document that exists in a professionally governed enterprise — across 25 functional domains spanning governance, operations, clinical practice, craft production, hospitality, and purpose-led work.</p>
+    <p>It serves three functions: <em>Inventory</em> — a complete map so nothing is unnamed or overlooked. <em>Decision Support</em> — enabling rapid identification of what is missing or available to commission. <em>Communication</em> — a reference for leadership to assess documentation maturity and prioritise next initiatives.</p>
+    <p>The gap between what exists in an organisation and what is listed here is where risk, inefficiency, and institutional knowledge loss reside.</p>
+  </div>
+  <div>
+    <h2>How to Read This Catalog</h2>
+    <p>Each entry represents one distinct document type, organised within 25 functional domains. Four columns per entry:</p>
+    <div class="col-grid">
+      <span class="col-key">#</span>
+      <span class="col-val">Reference number within the domain.</span>
+      <span class="col-key">Type</span>
+      <span class="col-val">The named document deliverable.</span>
+      <span class="col-key">Purpose</span>
+      <span class="col-val">What the document achieves and why it exists, in plain language.</span>
+      <span class="col-key">Driver</span>
+      <span class="col-val">The compliance framework, standard, or governance obligation that requires or informs it. Not a prerequisite — a ceiling of what the document can achieve when fully developed.</span>
+    </div>
+    <p style="margin-top:24px; font-size:16px; font-style:italic; color:var(--ink-mid);">Lucent Prism produces any document in this catalog — from a single template to a complete governance suite. Contact: nidhiagarwal@lucentprism.com</p>
+    <p style="margin-top:20px; font-family:'Jost',sans-serif; font-size:12px; color:var(--ink-light); line-height:1.75; padding-top:20px; border-top:1px solid var(--rule); letter-spacing:0.01em;">Disclaimer: This catalog has been produced by Lucent Prism as a documentation framework reference. Documents with legal, clinical, or regulatory implications should be reviewed and validated by qualified legal, clinical, or compliance professionals before execution or implementation.</p>
+  </div>
+</section>
+
+
+<!-- ══ MATURITY SCALE ══════════════════════════════════════════ -->
+<section class="maturity-section">
+  <p class="section-label" style="margin-bottom:28px">LP Maturity Framework — Every Engagement Calibrated to Your Stage</p>
+  <div class="maturity-grid">
+    <div class="ms-step">
+      <span class="ms-num" style="color:#c0b090;">L1</span>
+      <span class="ms-title">Foundation</span>
+      <span class="ms-desc">First policies and procedures. Ad hoc processes begin to be documented.</span>
+    </div>
+    <div class="ms-step">
+      <span class="ms-num" style="color:#a08060;">L2</span>
+      <span class="ms-title">Working System</span>
+      <span class="ms-desc">Core documents exist. Processes are followed but not yet centrally governed.</span>
+    </div>
+    <div class="ms-step">
+      <span class="ms-num" style="color:#7a5a40;">L3</span>
+      <span class="ms-title">Governed Practice</span>
+      <span class="ms-desc">Defined, documented, approved, and consistently followed. Audit-ready.</span>
+    </div>
+    <div class="ms-step">
+      <span class="ms-num" style="color:#5a3a28;">L4</span>
+      <span class="ms-title">Measured and Improving</span>
+      <span class="ms-desc">KPIs, reviews, and corrective systems drive continuous improvement.</span>
+    </div>
+    <div class="ms-step" style="border-right:none;">
+      <span class="ms-num" style="color:#3a2010;">L5</span>
+      <span class="ms-title">Self-Renewing Ecosystem</span>
+      <span class="ms-desc">Knowledge flows, adapts, and evolves with the organisation autonomously.</span>
+    </div>
+  </div>
+  <p class="ms-note"><strong>When a brief does not specify the level needed,</strong> Lucent Prism assesses current documentation maturity through a structured intake process before any work begins. You do not need to know what you need — that is LP&#8217;s job to find out. The quality standard applied remains constant across all levels. The depth, complexity, and expression of the document changes.</p>
+</section>
+
+<!-- DOMAIN OVERVIEW -->
+<section class="overview">
+  <p class="section-label">All 25 Domains</p>
+  <div class="overview-grid" id="js-overview"></div>
+</section>
+
+<!-- CATALOG -->
+<main class="catalog" id="js-catalog"></main>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-inner">
+    <div>
+      <div class="closing-logo"></div>
+      <h2>Every document in this catalog can be commissioned from Lucent Prism.</h2>
+      <p>This catalog is the complete map of organisational documentation — from governance frameworks for listed enterprises to practitioner protocols for holistic health centres, from CMMI evidence packages to spiritual curricula for purpose-led foundations, from export documentation for textile traders to guest experience frameworks for heritage hotels.</p>
+      <p>Lucent Prism brings a documentation production methodology refined over eight years of enterprise-grade work to every engagement, at every scale. The methodology is the asset. The document is its byproduct.</p>
+      <div class="closing-contact-block">
+        <div class="c-line">nidhiagarwal@lucentprism.com</div>
+        <div class="c-line">+91&nbsp;91193&nbsp;20400</div>
+        <div class="c-line">lucentprism.com</div>
+      </div>
+      <div class="closing-meta">
+        &copy; 2026 Lucent Prism &nbsp;·&nbsp; All Rights Reserved<br>
+        LP&#8209;CAT&#8209;001 &nbsp;·&nbsp; Version 1.0 &nbsp;·&nbsp; April 2026
+      </div>
+    </div>
+    <div>
+      <p class="section-label" style="margin-bottom:24px">All 25 Domains at a Glance</p>
+      <div class="all-domains-list" id="js-closing-domains"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <span>Lucent Prism &nbsp;·&nbsp; Knowledge Architecture and Documentation Practice</span>
+  <span style="font-size:10px; max-width:640px; text-align:right; line-height:1.7;">Documents with legal, clinical, or regulatory implications should be reviewed and validated by qualified professionals before execution or implementation. &nbsp;·&nbsp; nidhiagarwal@lucentprism.com &nbsp;·&nbsp; +91&nbsp;91193&nbsp;20400</span>
+</footer>
+
+<script>
+const D = [
+{n:1,name:"Governance, Compliance and Legal",c:"#1a1a2e",e:[
+["Policy","Foundational rule-document stating organisational position, rules, limits, and intent on any subject","Companies Act / ISO 9001 / SEBI"],
+["Standard","Specifies minimum acceptable technical or process requirements that must be met uniformly across the organisation","ISO 9001 / ISO 27001"],
+["Code of Conduct","Binding behavioural expectations across ethical, legal, and professional dimensions for all personnel","SEBI LODR / ISO 37001"],
+["Corporate Governance Framework","Documented system of rules, practices, and processes by which the company is directed and controlled","Companies Act / SEBI LODR"],
+["Memorandum of Association","Constitutional document defining the company's objects, powers, and scope of operations","Companies Act 2013"],
+["Articles of Association","Internal rulebook governing management, shareholding, board meetings, and director powers","Companies Act 2013"],
+["Board Resolution","Formal record of decisions made by the Board of Directors at board or committee meetings","Companies Act 2013"],
+["Shareholder Communication and Annual Report","Formal disclosure of financial results, governance actions, and strategic outlook to shareholders","SEBI LODR / Companies Act"],
+["Regulatory Disclosure","Mandatory disclosure of material events, board changes, and financials to the national stock exchange","SEBI LODR"],
+["Delegation of Authority Document","Defines who is authorised to approve, commit, or sign at what level and for what monetary value","ISO 9001 / Internal Governance"],
+["Statutory Compliance Register","Comprehensive register of all applicable laws, rules, and filing obligations with current status","Companies Act / Labour Laws"],
+["Master Service Agreement","Governing commercial contract template between the organisation and clients covering all engagements","Contract Law"],
+["Non-Disclosure Agreement","Binding confidentiality contract protecting proprietary information exchanged with external parties","Contract Law"],
+["Data Processing Agreement","Contract governing third-party processing of personal data on behalf of the organisation","GDPR / DPDP Act 2023"],
+["Privacy Policy (External)","Public-facing declaration of how personal data of customers and website visitors is handled","GDPR / DPDP Act 2023"],
+["Whistleblower Policy","Formal mechanism for reporting unethical conduct without fear of retaliation","SEBI / ISO 37001 / Companies Act"],
+["Anti-Bribery and Corruption Policy","Prohibits facilitation payments, gifts, and any form of bribery across all operations and geographies","ISO 37001 / FCPA / UK Bribery Act"],
+["Legal and Regulatory Risk Register","Inventory of legal exposure, regulatory obligations, and compliance monitoring status","ISO 31000 / Companies Act"],
+["Intellectual Property Policy","Governs ownership, protection, and usage of patents, trademarks, copyrights, and trade secrets","IP Act / ISO 27001"],
+]},
+{n:2,name:"Quality Management",c:"#005f5f",e:[
+["Quality Manual","Top-level QMS document describing scope, quality policies, and the interaction of all processes","ISO 9001:2015 Clauses 4–10"],
+["Standard Operating Procedure","Step-by-step instruction document governing execution of a specific operational process at enterprise grade","ISO 9001 / CMMI"],
+["Work Instruction","Granular, task-level instruction for a specific activity within a broader operational process","ISO 9001 Clause 8"],
+["Process Map and Flowchart","Visual representation of a process showing sequence, decision points, roles, inputs, and outputs","ISO 9001 / CMMI"],
+["RACI Matrix","Assignment of Responsible, Accountable, Consulted, and Informed roles across all process steps","ISO 9001 / CMMI"],
+["Quality Plan","Project-specific plan for quality assurance activities, checkpoints, and acceptance criteria","ISO 9001 Clause 8.1 / AS9100"],
+["Corrective and Preventive Action Report","Documents root cause analysis and systematic corrective actions to prevent recurrence of non-conformances","ISO 9001 Clause 10.2"],
+["Internal Audit Report","Formal output of internal audit examining compliance with QMS requirements across all functions","ISO 9001 Clause 9.2"],
+["Management Review Report","Minutes and decisions from management review meeting as required by the quality standard","ISO 9001 Clause 9.3"],
+["Non-Conformance Report","Formal finding from audit identifying a specific failure to meet a documented requirement","ISO 9001 / CMMI"],
+["KPI Dashboard","Visual and tabular presentation of process performance metrics against defined targets","ISO 9001 Clause 9.1"],
+["Customer Satisfaction Survey","Structured instrument for capturing customer perception of product and service quality","ISO 9001 Clause 9.1.2"],
+["Supplier Quality Assessment","Evaluation instrument for assessing supplier capability, compliance, and associated risk","ISO 9001 Clause 8.4"],
+["Quality Objectives Register","Documented quality objectives at function and process level with measurement and review plan","ISO 9001 Clause 6.2"],
+]},
+{n:3,name:"Information Security",c:"#162447",e:[
+["IT Security Policy","Overarching framework governing information security management across the organisation","ISO 27001:2022 Clause 5"],
+["Information Security Risk Assessment","Identification and evaluation of information security risks against the organisation's risk appetite","ISO 27001 Clause 6.1"],
+["Statement of Applicability","Documents which Annex A controls are applicable, implemented, or excluded with full justification","ISO 27001 Clause 6.1.3"],
+["Acceptable Use Policy","Rules governing permissible use of IT systems, devices, internet, and email by all personnel","ISO 27001 A.8 / NIST"],
+["Access Control Policy","Governs user access provisioning, periodic review, revocation, and privileged access management","ISO 27001 A.5–A.8"],
+["Incident Response Plan","Defines detection, containment, eradication, recovery, and post-incident review for security events","ISO 27001 A.5.24 / NIST CSF"],
+["Business Continuity Plan","Procedures for maintaining critical business functions during and after a major disruption","ISO 22301 / ISO 27001 A.5.29"],
+["Disaster Recovery Plan","Technical procedures for recovering IT systems and data following a catastrophic failure","ISO 27001 / ISO 22301"],
+["Data Classification Policy","Framework for categorising data by sensitivity and applying proportionate protection controls","ISO 27001 A.5.12 / NIST"],
+["Penetration Testing Report","Formal output of authorised security testing identifying exploitable vulnerabilities","ISO 27001 A.8.8 / PCI DSS"],
+["Vulnerability Assessment Register","Inventory of identified system vulnerabilities with risk ratings and remediation status tracking","ISO 27001 A.8.8"],
+["Third-Party Security Assessment","Security evaluation of vendor and partner systems that interact with the organisation's data","ISO 27001 A.5.19–5.22"],
+["Security Awareness Training Materials","Structured content for educating staff on security threats, obligations, and safe working practices","ISO 27001 A.6.3"],
+]},
+{n:4,name:"Environmental and Health and Safety",c:"#1e4620",e:[
+["Environmental Policy","Organisational commitment to environmental management, sustainability, and legal compliance","ISO 14001:2015 Clause 5.2"],
+["Environmental Aspects Register","Identifies environmental aspects of all operations and evaluates their significance and impact","ISO 14001 Clause 6.1"],
+["Legal Compliance Register","Tracks all applicable environmental and safety legal obligations with current compliance status","ISO 14001 / ISO 45001"],
+["Health and Safety Policy","Governs workplace safety obligations, hazard management, and occupational health standards","ISO 45001:2018 Clause 5.2"],
+["Hazard Identification and Risk Assessment","Systematic identification of workplace hazards and evaluation of associated risks for all activities","ISO 45001 Clause 6.1"],
+["Incident Investigation Report","Formal root cause analysis of workplace accidents, near-misses, and occupational safety incidents","ISO 45001 Clause 10.2"],
+["Emergency Response Plan","Procedures for responding to workplace emergencies — fire, chemical, medical, and evacuation","ISO 45001 Clause 8.2"],
+["Environmental Impact Assessment","Evaluates the environmental consequences of a proposed project or significant operational change","ISO 14001 / Regulatory"],
+["Waste Management Procedure","Documents categorisation, handling, storage, and disposal of all operational waste streams","ISO 14001 Clause 8 / Environmental Law"],
+["ESG Report","External disclosure of Environmental, Social, and Governance performance metrics to all stakeholders","SEBI BRSR / GRI / SASB"],
+["Safety Data Sheet","Standardised document providing health and safety information for chemical substances used","OSHA / GHS / Regulatory"],
+]},
+{n:5,name:"General Operations and Business Management",c:"#7a4100",e:[
+["Operations Manual","Comprehensive reference document covering all operational processes, standards, and execution procedures","ISO 9001 / Internal Governance"],
+["Maintenance Procedure","Covers preventive and corrective maintenance schedules for equipment, systems, and physical facilities","ISO 9001 Clause 8 / ISO 55000"],
+["Supply Chain Procedure","Governs supplier onboarding, performance management, review, and disengagement processes","ISO 9001 Clause 8.4"],
+["Outsourcing Governance Framework","Controls for managing outsourced operations — quality, risk, performance standards, and accountability","ISO 9001 / Internal Governance"],
+["Procurement Policy","Rules governing purchasing decisions, vendor selection, purchase orders, and approval authority","Internal Governance / Companies Act"],
+["Asset Management Policy","Governs lifecycle management of physical and digital assets from acquisition through to disposal","ISO 55000 / ISO 27001"],
+["Standard Work Document","Defines the baseline method, sequence, and time for a repeatable task or production activity","Lean Manufacturing / ISO 9001 / Quality Governance"],
+["Customer Service Procedure","Governs the handling of customer enquiries, complaints, escalations, and resolution across all service channels","ISO 9001 Clause 8.2 / Customer Experience"],
+["Returns, Refunds and Exchange Policy","Governs the conditions, process, and timelines for product returns, refunds, and exchanges","Consumer Protection Act / Business Governance"],
+["Dispatch and Logistics Procedure","Governs order fulfilment, packaging standards, carrier selection, dispatch documentation, and delivery tracking","Internal Governance / Logistics Standards"],
+["Quality Inspection Checklist","Structured instrument for inspecting products, services, or processes against defined quality standards at key stages","ISO 9001 / Quality Governance"],
+["Vendor Onboarding Framework","Governs the structured onboarding, documentation, and approval process for new vendors and suppliers","ISO 9001 Clause 8.4 / Procurement Governance"],
+]},
+{n:6,name:"IT Service Management",c:"#1a5276",e:[
+["Service Level Agreement","Defines IT service commitments, response times, escalation procedures, and penalty provisions","ISO 20000-1 / Contract Law"],
+["Service Catalogue","Itemised description of all IT services offered, including scope, deliverables, and pricing","ISO 20000-1 Clause 8.2"],
+["Capacity Plan","Documents current and projected IT resource capacity against operational demand forecasts","ISO 20000-1 / ITIL"],
+["Change Management Procedure","Governs assessment, approval, scheduling, and implementation of changes to IT production systems","ISO 20000-1 / CMMI CM"],
+["Release and Deployment Procedure","Manages transition of new or changed IT services from development into the live production environment","ISO 20000-1 / ITIL"],
+["Incident Management Procedure","Defines process for logging, prioritising, resolving, and formally closing IT operational incidents","ISO 20000-1 / ISO 27001"],
+["Problem Management Procedure","Governs root cause investigation of recurring incidents to identify and permanently eliminate underlying causes","ISO 20000-1 / ITIL"],
+["Configuration Management Plan","Defines identification, control, status accounting, and audit of all IT configuration items and baselines","ISO 20000-1 / CMMI CM"],
+["IT Operations Runbook","Step-by-step operational reference for managing routine and emergency IT tasks, system checks, and escalations","ITIL / ISO 20000-1 / DevOps"],
+["Service Reporting Framework","Defines the structure, frequency, content, and distribution of IT service performance reports to stakeholders","ISO 20000-1 / ITIL / Governance"],
+["Event Management Procedure","Governs the monitoring, classification, and response to IT system events before they escalate to incidents","ISO 20000-1 / ITIL / ISO 27001"],
+]},
+{n:7,name:"Process Governance and Project Management Documentation",c:"#3b0764",e:[
+["Requirements Management Plan","Documents how requirements are identified, traced, controlled, and managed across all projects","CMMI RM / ISO 29148"],
+["Requirements Traceability Matrix","Maps requirements from source through design, build, and test to verify complete coverage","CMMI RM / IEEE"],
+["Project Plan","Formal planning document with WBS, estimates, schedule, risks, and resource allocation","CMMI PP / PMI PMBOK"],
+["Project Status Report","Regular reporting of progress, issues, risks, and forecasts against the approved project plan","CMMI PMC / PMI PMBOK"],
+["Risk Register","Identifies, assesses, and tracks project and organisational risks with mitigation actions and owners","CMMI RSKM / ISO 31000"],
+["PPQA Plan and Review Records","Documents quality assurance review schedule, findings, and systematic closure of process deviations","CMMI PPQA / ISO 9001"],
+["Configuration Management Plan","Governs identification and control of configuration items, baselines, and change requests in any project","CMMI CM / ISO 9001"],
+["Requirements Development Specification","Documents customer and product requirements derived through structured elicitation and analysis","CMMI RD / IEEE 830"],
+["Technical Solution Document","Describes architecture, design, and implementation decisions for the product or system being built","CMMI TS / ISO 9001"],
+["Integration and Test Plan","Defines approach to assembling and verifying the integrated product against all stated requirements","CMMI PI / CMMI VER"],
+["Verification and Validation Records","Evidence that the product meets specified requirements and satisfies actual customer needs","CMMI VER / VAL / IEEE"],
+["Organisational Process Asset Library Index","Inventory of standard processes, guidelines, templates, lessons learned, and measurement data","CMMI OPD / KM Standards"],
+["Process Improvement Proposal","Formal proposal to change or improve an organisational standard process based on evidence and data","CMMI OPF / ISO 9001"],
+["Training Plan and Competency Matrix","Defines skills required per role, current gaps, planned training interventions, and effectiveness measures","CMMI OT / ISO 9001 Clause 7.2"],
+["Decision Analysis and Resolution Record","Documents criteria-based decision making for significant technical and managerial decisions","CMMI DAR / Internal Governance"],
+]},
+{n:8,name:"Software, Technology and Engineering Documentation",c:"#0c3b5e",e:[
+["System Requirements Specification","Complete description of the system to be built from functional and non-functional perspectives","IEEE 830 / ISO 29148"],
+["System Architecture Document","Defines the high-level design of a system including components, interfaces, and data flows","IEEE 42010 / ISO 25010"],
+["API Documentation","Technical reference for developers on endpoints, parameters, authentication, and usage examples","OpenAPI / Swagger"],
+["Technical Design Document","Detailed design specification for a software component, module, or subsystem","ISO 9001 Clause 8 / CMMI TS"],
+["Test Plan","Defines scope, approach, resources, and schedule for all testing activities on a project","IEEE 829 / ISO 29119"],
+["Test Cases and Scripts","Documented inputs, execution steps, and expected results for verifying system behaviour","IEEE 829 / ISO 29119"],
+["Bug and Defect Report","Formal record of a software defect with reproduction steps, severity classification, and resolution status","CMMI / ISO 29119"],
+["Release Notes","Change summary for each software release including new features, bug fixes, and known issues","ISO 9001 Clause 8.7 / DevOps"],
+["Deployment Guide","Step-by-step technical instructions for deploying an application to the production environment","ISO 20000-1 / DevOps"],
+["Operations and Maintenance Manual","Reference guide for operating and maintaining a deployed technical system over its full lifecycle","ISO 9001 / ISO 20000"],
+["Data Dictionary","Authoritative reference defining data elements, types, formats, and relationships within a system","ISO 11179 / Data Governance"],
+["Integration Specification","Defines interface contracts between systems — data formats, protocols, authentication, and error handling","IEEE / API Design Standards"],
+["User Manual and Help Documentation","End-user guidance for operating a software product, system, or digital service","ISO 9001 / UX Standards"],
+["Security Architecture Document","Specifies security controls, trust boundaries, and encryption mechanisms at system design level","ISO 27001 / NIST SP 800-53"],
+["Product Design Specification","Comprehensive document defining a product's intended function, form, materials, dimensions, performance requirements, and manufacturing constraints","BS 8888 / ISO 10303 / Engineering Practice"],
+["Engineering Change Notice","Formal record of a proposed or approved change to a product design, manufacturing process, or technical specification","ISO 9001 Clause 8.5 / Engineering Governance"],
+["Manufacturing Process Documentation","Detailed specification of the sequence of operations, machinery, tooling, materials, and quality checks required to produce a product","ISO 9001 / Lean Manufacturing / GMP"],
+["Bill of Materials","Structured list of all components, subassemblies, raw materials, and quantities required to manufacture or assemble a product","ERP / ISO 9001 / Manufacturing Governance"],
+["Product Requirements Document","Cross-functional document defining what a product must do — functional requirements, user needs, technical constraints, and success criteria","Product Management / IEEE 830 / Agile"],
+]},
+{n:9,name:"Human Resources and People",c:"#6b2000",e:[
+["HR Policy","Overarching policy governing employment terms, conduct, and people management practices","Labour Law / ISO 9001"],
+["Employee Handbook","Comprehensive reference for all staff covering policies, benefits, expectations, and procedures","Labour Law / Internal Governance"],
+["Job Description","Formal definition of a role including responsibilities, qualifications, and reporting structure","HR Best Practice / CMMI OT"],
+["Offer Letter Template","Standard employment offer covering role, compensation, start date, and key contractual terms","Contract Law / Labour Law"],
+["Employment Contract Template","Comprehensive employment agreement covering all terms of the employment relationship","Contract Law / Labour Law"],
+["Onboarding Checklist","Structured guide to access provisioning, training, and introductions for new joiners","ISO 9001 / CMMI OT"],
+["Performance Appraisal Framework","Defines criteria, rating methodology, calibration process, and outcomes for employee performance evaluation","HR Best Practice"],
+["Training Needs Analysis","Systematic assessment of skills gaps relative to role requirements and current strategic objectives","ISO 9001 Clause 7.2 / CMMI OT"],
+["Learning and Development Plan","Structured plan mapping training interventions to identified skills gaps per individual or team","ISO 9001 / CMMI OT"],
+["Succession Planning Document","Identifies critical roles and potential successors with readiness timelines and development plans","ISO 9001 / Business Continuity"],
+["Disciplinary Procedure","Formal process for addressing employee conduct and performance issues with progressive stages","Labour Law / Employment Law"],
+["Grievance Procedure","Formal mechanism for employees to raise workplace concerns and have them fairly addressed","Labour Law / HR Best Practice"],
+["Exit Interview Framework","Structured process for capturing departing employee insights on engagement and retention drivers","HR Analytics / Continuous Improvement"],
+["Workforce Analytics Report","Regular reporting on headcount, attrition, productivity, and talent pipeline metrics","ISO 9001 / HR Governance"],
+]},
+{n:10,name:"Strategy and Planning",c:"#4a0e26",e:[
+["Strategic Plan","Long-term directional document defining vision, strategic objectives, and key initiatives","ISO 9001 Clause 4 / Board Governance"],
+["Annual Operating Plan","Detailed plan translating strategic objectives into annual targets, budgets, and actionable initiatives","ISO 9001 / Internal Governance"],
+["Business Model Canvas","One-page visual framework summarising value proposition, customer segments, channels, and revenue streams","Business Strategy"],
+["Market Analysis Report","Evidence-based assessment of market size, trends, competitive landscape, and addressable opportunity","ISO 9001 / Business Development"],
+["Balanced Scorecard","Strategic performance framework linking financial and non-financial KPIs to strategic objectives","Kaplan and Norton / ISO 9001"],
+["OKR Framework Document","Defines Objectives and Key Results across the organisation for a defined planning period","OKR Methodology / Agile"],
+["Scenario Planning Document","Structured exploration of alternative future states and the organisation's strategic response to each","ISO 31000 / Strategic Risk Management"],
+["Board Strategy Paper","Formal strategic briefing document prepared for board discussion and decision-making","Companies Act / Board Governance"],
+["Competitive Intelligence Report","Structured analysis of competitor positioning, capabilities, pricing, and market movements","Business Strategy / Market Intelligence"],
+["Innovation Pipeline Document","Tracks ideas and initiatives from ideation through to commercialisation with stage-gate governance","ISO 56002 / Internal Governance"],
+]},
+{n:11,name:"Business Development, Sales and Marketing",c:"#8b1a00",e:[
+["Business Proposal","Commercial document responding to a client opportunity, proposing a solution and commercial terms","Business Development / Contract Law"],
+["Tender Response and RFP Response","Formal structured response to a public or private Request for Proposal","Procurement Law / Business Development"],
+["Statement of Work","Detailed specification of services, deliverables, timeline, milestones, and acceptance criteria","Contract Law / Project Management"],
+["Case Study","Documented evidence of a successful client engagement demonstrating capability and measurable impact","Marketing / Business Development"],
+["Capability Presentation","Visual deck communicating organisational capability, credentials, and service offerings to prospects","Business Development"],
+["Product and Solution Brochure","Marketing document describing a product or service offering and its value proposition to buyers","Marketing"],
+["Sales Playbook","Structured guide for sales teams covering lead qualification, messaging, and objection handling","Sales Effectiveness"],
+["Account Plan","Strategic plan for managing, growing, and deepening a specific high-value client relationship","Key Account Management"],
+["Marketing Plan","Comprehensive plan for marketing activities, campaigns, channel mix, budget, and KPIs","ISO 9001 / Marketing Strategy"],
+["Brand Guidelines","Defines visual and verbal brand standards for consistent and coherent external communication","Brand Management"],
+["Customer Journey Map","Visual representation of the end-to-end customer experience across all touchpoints and channels","CX Design / Marketing"],
+["Partnership Agreement","Commercial framework governing a strategic business partnership or distribution arrangement","Contract Law / Business Development"],
+]},
+{n:12,name:"Financial Documentation",c:"#0a2e1a",e:[
+["Annual Financial Report","Formal financial statements and disclosures for shareholders, regulators, and the investment community","Companies Act / SEBI LODR / IFRS"],
+["Budget and Forecast Document","Forward-looking financial plan with revenue, expense, headcount, and capital expenditure projections","Internal Governance / Finance"],
+["Management Accounts Pack","Internal periodic financial reporting pack for management decision-making and performance tracking","Internal Governance / Finance"],
+["Cash Flow Forecast","Projects cash inflows and outflows over a defined horizon to manage liquidity and funding needs","Finance / Banking Covenant Compliance"],
+["Investor Presentation","Executive-level deck presenting financial performance, strategy, and investment thesis to investors","SEBI / Investor Relations"],
+["Due Diligence Package","Structured information set prepared for investor, acquirer, or lender review of the organisation","M&A / Investment Law"],
+["Transfer Pricing Policy","Documents intercompany pricing methodology for related-party transactions across geographies","Income Tax Act / OECD Guidelines"],
+["Expense Policy","Rules governing employee expense claims, approval authorities, and reimbursement timelines","Internal Governance / Tax Law"],
+["Financial Controls Framework","Documents internal controls over financial reporting, segregation of duties, and approval limits","COSO / SOX / Companies Act"],
+["Tax Compliance Calendar","Tracks all tax filing obligations, deadlines, and responsible parties across all applicable jurisdictions","Income Tax Act / GST / Companies Act"],
+]},
+{n:13,name:"Project and Delivery Documentation",c:"#3a1a5e",e:[
+["Project Charter","Formal authorisation document initiating a project with defined objectives, scope, and governance","PMI PMBOK / CMMI PP"],
+["Project Management Plan","Comprehensive plan covering scope, schedule, cost, quality, risk, and communication","PMI PMBOK / ISO 21502"],
+["Work Breakdown Structure","Hierarchical decomposition of total project scope into manageable and measurable work packages","PMI PMBOK / CMMI PP"],
+["Project Schedule","Time-based representation of all project activities, dependencies, and milestones in Gantt format","PMI PMBOK / ISO 21502"],
+["Risk Register (Project)","Identifies, assesses, and tracks project-specific risks with probability, impact, and mitigation plans","CMMI RSKM / PMI PMBOK"],
+["Issue Log","Tracks open project issues with owner, priority, and current resolution status","PMI PMBOK / CMMI PMC"],
+["Change Request Form","Formal instrument for requesting and approving changes to approved project scope or baseline plan","PMI PMBOK / CMMI CM"],
+["Project Status Report","Regular structured update on progress, milestone status, risks, and forecast to completion","CMMI PMC / PMI PMBOK"],
+["Lessons Learned Register","Captures knowledge from project execution for systematic application to future projects","CMMI OPF / PMI PMBOK"],
+["Project Closure Report","Formal document marking project completion, summarising outcomes and recording final acceptance","PMI PMBOK / ISO 21502"],
+["Stakeholder Communication Plan","Defines who receives what information, in what format, at what frequency, and through which channel","PMI PMBOK / ISO 21502"],
+["Resource Allocation Plan","Maps project resource requirements to available organisational capacity over the project timeline","PMI PMBOK / CMMI PP"],
+["Quality Assurance Plan (Project)","Project-specific QA activities, review points, sign-off criteria, and responsibilities","ISO 9001 / CMMI PPQA"],
+["Client Delivery Report","Formal periodic report to client on delivery progress, achievements, and next period commitments","Contract / Service Governance"],
+]},
+{n:14,name:"Knowledge Management",c:"#5a1f8a",e:[
+["Knowledge Management Strategy","Defines the organisation's approach to capturing, organising, distributing, and renewing knowledge assets","ISO 9001 Clause 7.1.6 / KM Standards"],
+["Document Management Policy","Governs creation, naming convention, versioning, storage, retrieval, and disposal of controlled documents","ISO 9001 / ISO 15489"],
+["Knowledge Repository Architecture","Structural design for organising, tagging, and providing access to the organisation's knowledge assets","KM Standards / ISO 9001"],
+["Process Knowledge Map","Visual representation of where critical operational knowledge resides within the organisation","KM / ISO 9001 / CMMI OPD"],
+["Lessons Learned Library","Consolidated repository of insights from projects, incidents, audits, and improvement initiatives","CMMI OPF / KM Standards"],
+["Subject Matter Expert Register","Identifies individuals with critical domain knowledge and assesses knowledge concentration risk","KM / Risk Management"],
+["Knowledge Audit Report","Assessment of current knowledge assets, gaps, risks, and key person dependency within the organisation","KM Standards / Risk Management"],
+["Onboarding Knowledge Pack","Structured set of documents and guides enabling a new joiner to become productive quickly","ISO 9001 / CMMI OT"],
+["Taxonomy and Classification Framework","System for categorising and tagging knowledge assets to enable findability and retrieval at scale","Information Architecture / KM"],
+["Communities of Practice Charter","Defines purpose, membership, governance, and expected outputs of knowledge-sharing communities","KM Standards"],
+["AI Usage Policy and Guidelines","Governs permissible use of AI tools, quality control requirements, and intellectual property considerations","Emerging Governance / ISO 42001"],
+["Knowledge Transfer Plan","Structured plan for transferring critical knowledge from an individual to the wider organisation","KM / Business Continuity / HR"],
+]},
+{n:15,name:"Reporting and Communication",c:"#0a2a4a",e:[
+["Board Report","Periodic formal report to the Board of Directors on organisational performance, risk, and governance","Companies Act / Board Governance"],
+["Monthly Management Report","Structured internal reporting on operational, financial, and strategic performance for leadership","ISO 9001 / Internal Governance"],
+["Stakeholder Communication Plan","Defines communication approach to all key stakeholder groups at organisational level","ISO 9001 Clause 7.4 / Governance"],
+["Newsletter and Internal Communication","Regular internal publication updating staff on company news, achievements, priorities, and culture","Internal Communications"],
+["Press Release and Media Statement","Formal external communication prepared for media distribution on significant organisational news","PR / Investor Relations"],
+["Annual General Meeting Notice","Formal notice to shareholders of AGM date, agenda, materials, and resolutions for consideration","Companies Act 2013"],
+["Executive Briefing Note","Concise structured summary of a complex topic prepared for senior management decision-making","Internal Governance"],
+["Crisis Communication Plan","Pre-approved messaging frameworks and communication protocols for managing major incidents publicly","Business Continuity / PR"],
+["Investor Relations Calendar","Tracks all investor communication obligations, events, disclosure deadlines, and silent period dates","SEBI LODR / Investor Relations"],
+["Sustainability Report","Formal external disclosure of ESG performance, forward targets, and governance to all stakeholders","GRI / SEBI BRSR / TCFD"],
+]},
+{n:16,name:"Research and Intellectual Capital",c:"#5e3d00",e:[
+["White Paper","In-depth, authoritative document on a specific business, technical, or policy topic for external audiences","Thought Leadership / Marketing"],
+["Industry Analysis Report","Structured research report on industry dynamics, competitive trends, and strategic implications","Business Intelligence"],
+["Benchmarking Study","Comparative analysis of the organisation's practices or performance against peers or best-in-class standards","ISO 9001 / Continuous Improvement"],
+["User Research Report","Documented findings from user interviews, surveys, usability studies, and observational research","UX Research / Product Development"],
+["Feasibility Study","Structured assessment of technical, financial, and operational viability of a proposed initiative","Project Governance / Finance"],
+["Intellectual Property Register","Comprehensive register of owned IP assets — patents, trademarks, copyright, and trade secrets","IP Law / ISO 27001"],
+["Research and Development Report","Periodic disclosure of R&D activities, investments, outcomes, and pipeline status","Companies Act / Innovation Governance"],
+["Knowledge Asset Valuation","Assessment of the economic value of the organisation's intangible knowledge and intellectual assets","Intangible Asset Accounting / KM"],
+]},
+{n:17,name:"Healthcare and Clinical Documentation",c:"#004f7c",e:[
+["Clinical Protocol","Standard procedure governing clinical care pathways, intervention standards, and patient management","NABH / JCI / WHO Clinical Guidelines"],
+["Patient Informed Consent Form","Legal document ensuring patient understanding and agreement before procedures or treatment","Medical Law / NABH / Patient Rights"],
+["Clinical Audit Report","Systematic review of clinical practice against evidence-based standards to identify and close quality gaps","NABH / Clinical Governance"],
+["NABH Accreditation Documentation","Complete documentation suite required for hospital and healthcare facility accreditation under NABH","NABH Standards"],
+["Medical Records Policy","Governs creation, maintenance, access, retention, and disposal of patient health records","NABH / IT Act / MCI Guidelines"],
+["Infection Control Procedure","Protocols for preventing healthcare-associated infections across all clinical and support areas","NABH / WHO IPC / IDSP"],
+["Pharmacy Management SOP","Governs drug procurement, storage, dispensing, reconciliation, and controlled substance management","NABH / Pharmacy Act / CDSCO"],
+["Patient Safety Incident Report","Formal documentation of adverse clinical events and near-misses with root cause analysis","NABH Patient Safety / AHRQ"],
+["Equipment Maintenance and Calibration Log","Records preventive and corrective maintenance for medical equipment with calibration certification","NABH / ISO 13485 / CDSCO"],
+["Discharge Summary Template","Standardised documentation of the care episode, treatments, outcomes, and follow-up instructions","NABH / Medical Practice Standards"],
+["Staff Competency Assessment — Clinical","Role-specific clinical competency evaluation instruments for patient-facing healthcare personnel","NABH / HR / NMC / MCI"],
+["Clinical Risk Register","Identification, assessment, and management of clinical risks at department and facility level","NABH / ISO 31000 / Clinical Governance"],
+]},
+{n:18,name:"Education and Academic Documentation",c:"#5c3000",e:[
+["Curriculum Framework","Structured document defining learning outcomes, content scope, pedagogical approach, and assessment design","NAAC / UGC / NEP 2020"],
+["Lesson Plan Template","Standardised planning document for individual teaching sessions covering objectives, activities, and assessment","Institutional / NEP 2020"],
+["Learning Outcomes Register","Documented measurable learning outcomes per course, programme, and institutional level for accreditation","NAAC / NBA / Accreditation Standards"],
+["Assessment Rubric","Detailed scoring criteria for evaluating student performance against defined competencies and standards","Academic Best Practice"],
+["Academic Integrity Policy","Governs plagiarism, academic misconduct, research fabrication, and ethical academic conduct standards","UGC Regulations / Institutional"],
+["Accreditation Self-Study Report","Comprehensive institutional report prepared for regulatory accreditation body review and site visit","NAAC / NBA / NIRF"],
+["Faculty Handbook","Reference document for academic staff on institutional policies, procedures, rights, and expectations","Institutional Governance"],
+["Student Handbook","Comprehensive guide for students on institutional policies, resources, processes, and support systems","Institutional Governance"],
+["Research Ethics Framework","Governs ethical conduct of research involving human subjects, data, and sensitive information","ICMR / UGC / Helsinki Declaration"],
+["Institutional Performance Report","Annual disclosure of academic, research, placement, and operational performance metrics","NAAC / NIRF / Accreditation"],
+["Admissions Policy","Governs student selection criteria, process, diversity provisions, and appeals mechanism","UGC Regulations / Regulatory"],
+]},
+{n:19,name:"Media, Communications and Publishing",c:"#6b0040",e:[
+["Editorial Style Guide","Authoritative reference for language, voice, grammar, tone, terminology, and formatting standards","AP Style / Chicago Manual / Internal"],
+["Content Governance Policy","Governs content creation, review, approval, publication, archival, and retirement processes","Internal Governance"],
+["Publishing Workflow","Step-by-step procedure from manuscript briefing or submission through editing to final publication","Editorial Best Practice"],
+["Rights and Licensing Register","Tracks intellectual property permissions, licences, usage rights, and expiry dates for all content assets","IP Law / Copyright Act / Licensing"],
+["Broadcast Compliance Documentation","Records regulatory compliance for broadcast content including classification, clearances, and timing logs","TRAI / MIB / Ofcom / FCC"],
+["Content Calendar","Strategic planning document for scheduled content publication across all channels and platforms","Content Strategy"],
+["Media Relations Policy","Governs staff interactions with press, media enquiries, spokesperson protocols, and embargo management","PR Governance / Ethics"],
+["Corrections and Retractions Policy","Formal process for acknowledging, documenting, and rectifying errors in published content","Editorial Ethics / Press Council"],
+["Content Approval Workflow","Multi-stage sign-off process governing content through legal, editorial, compliance, and brand review","Internal Governance"],
+["Brand Journalism Guidelines","Standards governing editorial independence, transparency, and ethics within branded content production","Journalism Ethics / IAB Standards"],
+]},
+{n:20,name:"Wellness, Holistic Practice and Integrative Health",c:"#244d16",e:[
+["Practitioner Clinical Protocol","Documented standards of practice governing assessment, treatment, and client care by holistic practitioners","Institutional / AYUSH / Practice Governance"],
+["Client Intake and Assessment Form","Structured intake instrument capturing health history, lifestyle, constitution, and wellness goals","Practice Governance / AYUSH"],
+["Treatment Documentation Standards","Governs documentation of therapeutic interventions, client progress, dosage records, and outcomes","AYUSH / Practice Governance / Ethics"],
+["Contraindications Register","Reference document listing conditions, medications, and circumstances where specific treatments are contraindicated","Clinical Safety / AYUSH / Evidence-Based Practice"],
+["Informed Consent for Holistic Therapies","Client agreement acknowledging the scope, limitations, and complementary nature of holistic treatments","Medical Law / Ethics / AYUSH"],
+["Wellness Programme Design Document","Structured framework for designing, delivering, evaluating, and iterating wellness programmes at scale","Health Promotion / Evidence-Based Design"],
+["Product Formulation Record","Documents ingredients, ratios, sourcing details, and preparation methodology for wellness products","FSSAI / AYUSH / GMP / Organic Certification"],
+["Practitioner Code of Conduct","Ethical and professional standards governing the conduct of holistic and integrative health practitioners","Professional Associations / AYUSH / Ethics"],
+["Ingredient Sourcing and Traceability Log","Tracks origin, quality certification, supply chain, and chain of custody for natural and organic ingredients","FSSAI / Organic Certification / Supply Chain"],
+]},
+{n:21,name:"Purpose-Led Organisations and Foundations",c:"#0d3535",e:[
+["Organisational Charter and Trust Deed","Constitutional document defining mission, purpose, values, governance structure, and operational boundaries","Trusts Act / Companies Act Section 8"],
+["Donor Stewardship Policy","Governs donor relations, gift acknowledgement, purpose-restricted fund management, and ethical fundraising","FCRA / NGO Governance / Charity Law"],
+["Volunteer Management Framework","Governs volunteer recruitment, onboarding, role assignment, supervision, recognition, and offboarding","NGO Best Practice / Labour Law"],
+["Programme Design and Impact Documentation","Framework for designing, implementing, monitoring, and measuring the impact of social programmes","M&E Frameworks / UNDP / Impact Standards"],
+["Spiritual Practice Curriculum","Documented teaching framework for spiritual education, practice sequences, and learning progression","Institutional / Traditional Knowledge Systems"],
+["Community Governance Framework","Defines decision-making structures, representation mechanisms, and conflict resolution within communities","Internal Governance / Co-operative Principles"],
+["Annual Impact Report","External disclosure of social, environmental, and mission-aligned outcomes to all stakeholders and funders","NGO Governance / FCRA / GRI Social Standards"],
+["Land and Resource Stewardship Policy","Governs sustainable use, conservation priorities, and community access protocols for land and natural resources","Environmental Law / Institutional / UN Land Rights"],
+["Oral Tradition and Knowledge Preservation Protocol","Framework for documenting, archiving, contextualising, and transmitting oral knowledge, ritual, and practice","UNESCO / Knowledge Governance / Institutional"],
+]},
+{n:22,name:"Textiles, Apparel and Craft Production",c:"#7a2e00",e:[
+["Fabric Sourcing and Quality Specification","Documents fibre content, weave type, quality parameters, and supplier specifications for procurement","Export Quality Control / BIS / Buyer Standards"],
+["Print and Design Documentation","Records block patterns, screen designs, colourways, and repeat specifications for printed textiles","Design IP / Export Standards / Craft Councils"],
+["Artisan SOP","Governs step-by-step craft production — block printing, hand embroidery, natural dyeing, and weaving","Craft Councils / Export Quality / Artisan Practice"],
+["Colour and Dye Formulation Record","Documents dye recipes, mordants, natural and synthetic dye ratios, and fixation processes","BIS / GOTS / OEKO-TEX / Artisan Standards"],
+["Sampling and Approval Workflow","Defines the process from design brief through sampling, buyer review, and production sign-off","Export Standards / Buyer Requirements"],
+["Fabric Testing and Compliance Report","Records test results for colourfastness, shrinkage, tensile strength, and chemical safety","OEKO-TEX / BIS / REACH / Export Compliance"],
+["Buyer-Seller Framework Agreement","Commercial framework governing orders, sampling, pricing, payment terms, and dispute resolution","Contract Law / Export Policy / Trade Practice"],
+["Export Documentation Package","Organises all documents required for international textile export — certificates, invoices, compliance","DGFT / Customs Act / FIEO / Export Policy"],
+["Intellectual Property Register — Craft Motifs","Documents ownership and provenance of traditional and original design motifs and craft techniques","IP Act / GI Tags / Craft IP / Traditional Knowledge"],
+["Supply Chain Traceability Log","Tracks fibre origin, weaving or printing location, and processing chain for sustainability compliance","GOTS / OEKO-TEX / Fair Trade / Buyer Standards"],
+["Worker Welfare and Fair Practice Policy","Governs ethical employment, wages, working conditions, and fair trade compliance for artisans and workers","Labour Law / Fair Trade / SA8000 / Artisan Rights"],
+["Inventory and Production Control SOP","Manages raw material procurement, work-in-progress tracking, and finished goods inventory","Internal Governance / ERP / Export Standards"],
+]},
+{n:23,name:"Hospitality and Tourism",c:"#4a3000",e:[
+["Front Office Standard Operating Procedure","Governs check-in, check-out, reservation handling, guest communication, and front desk operations","FHRAI / Brand Standards / ISO 9001"],
+["Housekeeping SOP","Defines room preparation standards, cleaning protocols, inspection checklists, and lost and found procedures","FHRAI / Brand Standards / Quality Governance"],
+["Food and Beverage Operations SOP","Governs kitchen operations, service standards, menu management, and food safety compliance","FSSAI / HACCP / FHRAI / Food Safety Act"],
+["Guest Experience Framework","Defines the end-to-end guest journey, service touchpoints, escalation procedures, and recovery standards","Brand Standards / CX Design / FHRAI"],
+["Health and Safety Policy — Hospitality","Governs fire safety, emergency evacuation, food safety, pool safety, and guest security protocols","Fire Act / FSSAI / FHRAI / NDMA"],
+["Revenue Management Documentation","Governs room pricing strategy, yield management, OTA channel policies, and rate parity standards","FHRAI / Internal Governance / Revenue Management"],
+["Vendor and Supplier Agreement — F&B","Commercial framework for food and beverage suppliers including quality standards and delivery terms","FSSAI / Contract Law / Vendor Governance"],
+["FSSAI Compliance Documentation","Complete documentation for food safety licensing, annual returns, and hygiene audit requirements","FSSAI Act / Food Safety and Standards Authority"],
+["Employee Grooming and Conduct Standards","Defines appearance standards, guest interaction protocols, and professional conduct for guest-facing staff","Brand Standards / HR / FHRAI"],
+["Maintenance and Engineering SOP","Governs preventive maintenance, breakdown response, and engineering operations for the property","Internal Governance / Safety Standards / PWD"],
+["Crisis Management and Emergency Response Plan","Response protocols for fire, medical emergencies, security incidents, and natural disasters","NDMA / Fire Act / FHRAI / Safety Standards"],
+["Sustainability and Green Operations Policy","Governs energy efficiency, water conservation, waste management, and sustainable procurement","Green Hotel / IGBC / FHRAI / ESG Standards"],
+]},
+{n:24,name:"AI Collaboration and Knowledge Production Systems",c:"#1a1a4a",e:[
+["Human-AI Collaboration Architecture","Governing design document defining how human expertise and AI capability are combined in a production system","LP Methodology / ISO 42001"],
+["AI Usage Policy and Guidelines","Governs permissible use, quality control requirements, IP ownership, and ethical obligations for AI tool usage","ISO 42001 / Emerging Governance"],
+["Session Protocol Document","Structured framework governing how each AI-assisted production session is initiated, executed, audited, and closed","LP Methodology / KM Standards"],
+["Prompt Governance Framework","Documents prompt design standards, version control, testing protocols, and ownership for AI production environments","LP Methodology / Emerging Governance"],
+["Output Quality Control Checklist","Mandatory self-audit instrument verifying AI-assisted outputs against defined quality, accuracy, and compliance standards","LP Methodology / ISO 9001"],
+["AI Production Failure Register","Structured register of failure patterns, root causes, and prevention rules derived from AI-assisted production experience","LP Methodology / CMMI OPF"],
+["AI Tool Evaluation Framework","Criteria-based assessment instrument for evaluating, selecting, and governing AI tools for professional production use","ISO 42001 / Procurement Governance"],
+["Knowledge Production System Design Document","Blueprint for the complete system by which an organisation produces, governs, and maintains its knowledge assets using AI augmentation","LP Methodology / KM Standards"],
+["AI-Augmented Workflow SOP","Step-by-step operational procedure for executing a specific document production workflow using human-AI collaboration","LP Methodology / ISO 9001"],
+["Responsible AI Governance Policy","Organisational policy governing ethical AI deployment, bias management, transparency obligations, and accountability structures","ISO 42001 / EU AI Act / NITI Aayog"],
+["AI Project Handover Document","Structured record of an AI-assisted project — methodology used, tools deployed, outputs produced, and lessons captured","LP Methodology / CMMI"],
+["Model and Tool Selection Criteria","Documented decision framework for selecting AI models and tools based on task requirements, quality standards, and risk profile","ISO 42001 / Procurement Governance"],
+]},
+{n:25,name:"Government and Public Sector Documentation",c:"#2c3e50",e:[
+["Policy Circular and Government Order","Formal directive issued by a ministry, department, or regulatory authority communicating policy decisions and compliance obligations","Government of India Manual / State Rules / Regulatory Practice"],
+["Detailed Project Report (DPR)","Comprehensive feasibility and implementation document for government-funded infrastructure or programme projects","Planning Commission / Ministry Guidelines / CPWD"],
+["Tender Document and Request for Proposal","Formal procurement document inviting bids from vendors for government contracts — works, goods, or services","GFR 2017 / CVC Guidelines / GeM / CPPP"],
+["Cabinet Note and Policy Brief","Structured briefing document prepared for cabinet committee consideration of a proposed policy or legislative change","Cabinet Secretariat Manual / Government of India"],
+["Annual Report — Government Body","Statutory annual disclosure of activities, expenditure, outcomes, and performance for government ministries and PSUs","Companies Act / CAG / Ministry Guidelines / RTI Act"],
+["RTI Response Framework","Documented framework governing the receipt, processing, and response to Right to Information requests","RTI Act 2005 / CIC Guidelines"],
+["CAG Audit Response Document","Formal departmental response to findings raised by the Comptroller and Auditor General during statutory audit","CAG Act / Government Accounting Standards"],
+["Government Scheme Documentation","Complete documentation package for a government welfare or development scheme — design, eligibility, implementation, monitoring","NITI Aayog / Ministry Guidelines / DBT Framework"],
+["Public-Private Partnership Agreement","Governing framework document for PPP projects defining roles, risk allocation, revenue sharing, and performance obligations","PPP Policy / DPIIT / Viability Gap Funding Guidelines"],
+["Parliamentary Committee Report","Structured report presented to a parliamentary standing or select committee on a specific subject or legislation","Lok Sabha / Rajya Sabha Secretariat Rules"],
+["Memorandum of Understanding — Government","Formal agreement between government bodies, or between government and non-government entities, defining collaborative terms","Government of India / State Government Practice"],
+["Regulatory Impact Assessment","Structured analysis of the economic, social, and administrative impact of a proposed regulation before its introduction","FRBM / Regulatory Reform Guidelines / OECD RIA Standards"],
+["Government Correspondence and Noting","Structured official correspondence, file notings, office memoranda, and demi-official letters in prescribed government formats","Central Secretariat Manual of Office Procedure"],
+["Digital India and e-Governance Documentation","Documentation governing digital transformation initiatives — system design, citizen interface standards, data governance, and rollout","MeitY / Digital India Programme / NeGP Standards"],
+]},
+];
+
+// ══ RENDER ═══════════════════════════════════════════════════════════
+
+const totalDocs = D.reduce((s,d)=>s+d.e.length, 0);
+
+// Cover stats
+const statsEl = document.getElementById('js-stats');
+[
+  [totalDocs.toString(), "Document\nTypes Cataloged"],
+  [D.length.toString(), "Functional\nDomains"],
+  ["8+", "Years\nProduction Methodology"],
+  ["L1\u2013L5", "Every Stage\nof Maturity"],
+].forEach(([num, lbl]) => {
+  statsEl.innerHTML += `<div class="stat">
+    <span class="stat-n">${num}</span>
+    <span class="stat-l">${lbl.replace('\n','<br>')}</span>
+  </div>`;
+});
+
+// Overview grid
+const ovEl = document.getElementById('js-overview');
+D.forEach(d => {
+  ovEl.innerHTML += `<div class="ov-item" style="--d-color:${d.c}">
+    <span class="ov-num">Domain ${d.n}</span>
+    <div class="ov-name">${d.name}</div>
+    <div class="ov-count">${d.e.length} document types</div>
+  </div>`;
+});
+
+// Main catalog
+const catEl = document.getElementById('js-catalog');
+let counter = 0;
+D.forEach(d => {
+  const rows = d.e.map((e, i) => {
+    counter++;
+    const bg = i % 2 === 1 ? 'background:#fafaf8' : '';
+    return `<tr style="${bg}">
+      <td>${String(counter).padStart(3,'0')}</td>
+      <td class="t-type">${e[0]}</td>
+      <td class="t-purpose">${e[1]}</td>
+      <td class="t-standard">${e[2]}</td>
+    </tr>`;
+  }).join('');
+
+  catEl.innerHTML += `
+  <section class="domain" id="d${d.n}" style="--d-color:${d.c}">
+    <div class="domain-hdr">
+      <span class="d-num">Domain ${d.n} of ${D.length}</span>
+      <h2 class="d-name">${d.name}</h2>
+    </div>
+    <div class="d-meta">
+      <div class="d-rule" style="flex:1; margin-right:16px"></div>
+      <span class="d-count">${d.e.length} types</span>
+    </div>
+    <table class="etable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Document Type</th>
+          <th>What It Achieves</th>
+          <th>Standard / Driver</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </section>`;
+});
+
+// Closing domains list
+const cdEl = document.getElementById('js-closing-domains');
+D.forEach(d => {
+  cdEl.innerHTML += `<div class="adl-row">
+    <span class="adl-name" style="color:${d.c}">${d.name}</span>
+    <span class="adl-n">${d.e.length}</span>
+  </div>`;
+});
+</script>
+</body>
+</html>
